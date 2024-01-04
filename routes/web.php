@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,15 +10,28 @@ Route::get('/', function () {
 
 // CATEGORÍAS
 Route::prefix('categorias')->group(function () {
-    Route::get('/', function () {
+    Route::get('/', function (Request $request) {
         $categorias = [
-            'Fideos',
-            'Verduras',
-            'Arroz'
+            'Fideos' => [
+                'Moñitos',
+                'Fideos largos',
+                'Cabello de angel'
+            ],
+            'Verduras' => [
+                'Tomate',
+                'Lechuga',
+                'Cebolla'
+            ]
         ];
 
-        foreach ($categorias as $categoria) {
-            echo $categoria . '<br>';
+        if (!is_null($request->input('nombre'))) {
+            if (array_key_exists($request->input('nombre'), $categorias)) {
+                echo 'Categoría existe';
+            }
+        } else {
+            foreach ($categorias as $nombreCategoria => $categoria) {
+                echo $nombreCategoria . '<br>';
+            }
         }
     });
 
