@@ -5,7 +5,33 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
+    $categorias = [
+        'Fideos' => [
+            'Moñitos',
+            'Fideos largos',
+            'Cabello de angel'
+        ],
+        'Verduras' => [
+            'Tomate',
+            'Lechuga',
+            'Cebolla'
+        ]
+    ];
 
+    $nombreCategorias = [];
+    $productos = [];
+    foreach ($categorias as $nombreCategoria => $categoriaArray) {
+        $nombreCategorias[] = $nombreCategoria;
+
+        foreach ($categoriaArray as $producto) {
+            $productos[] = $producto;
+        }
+    }
+
+    return view('home', [
+        'categorias' => $nombreCategorias,
+        'productos' => $productos
+    ]);
 });
 
 // CATEGORÍAS
@@ -54,20 +80,14 @@ Route::get('productos/{categoria?}', function (?string $categoria = null) {
         ]
     ];
 
-    // si el usuario no ingresa categoría
-    if (is_null($categoria)) {
-        // muestro todos los productos
-        foreach ($categorias as $categoriaArray) {
-            foreach ($categoriaArray as $producto) {
-                echo $producto . '<br>';
-            }
-        }
-    } else {
-        // checkeo si el nombre de la categoria existe en el array
-        if (array_key_exists($categoria, $categorias)) {
-            foreach ($categorias[$categoria] as $producto) {
-                echo $producto . '<br>';
-            }
+    $productos = [];
+    foreach ($categorias as $categoriaArray) {
+        foreach ($categoriaArray as $producto) {
+            $productos[] = $producto;
         }
     }
+
+    return view('productos', [
+        'productos' => $productos
+    ]);
 });
