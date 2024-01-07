@@ -20,19 +20,5 @@
         </div>
     </div>
 
-    <h3>PRODUCTOS</h3>
-    <div class="container">
-        <div class="row">
-            @foreach($productos as $producto)
-                <div class="col-12 col-sm-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $producto }}</h5>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+    @include('_includes/productos')
 @endsection
