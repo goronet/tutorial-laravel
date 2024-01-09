@@ -2,37 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        $categorias = [
-            'Fideos' => [
-                'Moñitos',
-                'Fideos largos',
-                'Cabello de angel'
-            ],
-            'Verduras' => [
-                'Tomate',
-                'Lechuga',
-                'Cebolla'
-            ]
-        ];
+        $categorias = Categoria::all();
 
-        $nombreCategorias = [];
-        $productos = [];
-
-        foreach ($categorias as $nombreCategoria => $categoriaArray) {
-            $nombreCategorias[] = $nombreCategoria;
-
-            foreach ($categoriaArray as $producto) {
-                $productos[] = $producto;
-            }
-        }
-
-        return view('home', [
-            'categorias' => $nombreCategorias,
-            'productos' => $productos
-        ]);
+        return view('home', compact('categorias'));
     }
 }
