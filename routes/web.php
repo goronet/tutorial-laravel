@@ -1,93 +1,19 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    $categorias = [
-        'Fideos' => [
-            'Moñitos',
-            'Fideos largos',
-            'Cabello de angel'
-        ],
-        'Verduras' => [
-            'Tomate',
-            'Lechuga',
-            'Cebolla'
-        ]
-    ];
+Route::get('/', [HomeController::class, 'index']);
 
-    $nombreCategorias = [];
-    $productos = [];
-    foreach ($categorias as $nombreCategoria => $categoriaArray) {
-        $nombreCategorias[] = $nombreCategoria;
-
-        foreach ($categoriaArray as $producto) {
-            $productos[] = $producto;
-        }
-    }
-
-    return view('home', [
-        'categorias' => $nombreCategorias,
-        'productos' => $productos
-    ]);
-});
 
 // CATEGORÍAS
+Route::get('categorias', [CategoriaController::class, 'index']);
+
 Route::prefix('categorias')->group(function () {
-    Route::get('/', function (Request $request) {
-        $categorias = [
-            'Fideos' => [
-                'Moñitos',
-                'Fideos largos',
-                'Cabello de angel'
-            ],
-            'Verduras' => [
-                'Tomate',
-                'Lechuga',
-                'Cebolla'
-            ]
-        ];
-
-        if (!is_null($request->input('nombre'))) {
-            if (array_key_exists($request->input('nombre'), $categorias)) {
-                echo 'Categoría existe';
-            }
-        } else {
-            foreach ($categorias as $nombreCategoria => $categoria) {
-                echo $nombreCategoria . '<br>';
-            }
-        }
-    });
-
-    Route::get('{nombreCategoria}', function (string $nombreCategoria) {
-        echo 'productos de ' . $nombreCategoria;
-    });
+    Route::get('/', [CategoriaController::class, 'index']);
+    Route::get('{nombreCategoria}', [CategoriaController::class, 'categoria']);
 });
 
-Route::get('productos/{categoria?}', function (?string $categoria = null) {
-    $categorias = [
-        'Fideos' => [
-            'Moñitos',
-            'Fideos largos',
-            'Cabello de angel'
-        ],
-        'Verduras' => [
-            'Tomate',
-            'Lechuga',
-            'Cebolla'
-        ]
-    ];
-
-    $productos = [];
-    foreach ($categorias as $categoriaArray) {
-        foreach ($categoriaArray as $producto) {
-            $productos[] = $producto;
-        }
-    }
-
-    return view('productos', [
-        'productos' => $productos
-    ]);
-});
+Route::get('productos/{categoria?}', [CategoriaController::class, 'index']);
