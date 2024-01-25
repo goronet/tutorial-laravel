@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Product;
+
 class ProductoController extends Controller
 {
+    public function crearProducto()
+    {
+        $producto = new Product();
+        $producto->nombre = 'Lechuga';
+        $producto->categoria_id = 2;
+        $producto->save();
+    }
+
     public function index(?string $categoria = null)
     {
-        $categorias = [
-            'Fideos' => [
-                'Moñitos',
-                'Fideos largos',
-                'Cabello de angel'
-            ],
-            'Verduras' => [
-                'Tomate',
-                'Lechuga',
-                'Cebolla'
-            ]
-        ];
+        if (!is_null($categoria)) {
+            $categoria = Categoria::where('nombre', $categoria)->first();
 
-        $productos = [];
-        foreach ($categorias as $categoriaArray) {
-            foreach ($categoriaArray as $producto) {
-                $productos[] = $producto;
+            if (empty($categoria)) {
+                dd('No existe la categoria');
+            } else {
+                $productos = Product::where('categoria_id', $categoria->id)->get();
             }
+        } else {
+            $productos = Product::all();
         }
 
         return view('productos', [
