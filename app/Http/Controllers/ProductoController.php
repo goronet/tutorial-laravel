@@ -33,4 +33,9 @@ class ProductoController extends Controller
             'productos' => $productos
         ]);
     }
+
+    public function verProducto(Product $producto)
+    {
+        return view('producto', ['producto' => $producto]);
+    }
 }

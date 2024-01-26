@@ -18,5 +18,6 @@ Route::prefix('categorias')->group(function () {
 });
 
 // PRODUCTOS
-Route::get('productos/crear-productos', [ProductoController::class, 'crearProducto']);
+Route::get('productos/crear-producto', [ProductoController::class, 'crearProducto']);
+Route::get('productos/ver-producto/{producto}', [ProductoController::class, 'verProducto']);
 Route::get('productos/{categoria?}', [ProductoController::class, 'index']);

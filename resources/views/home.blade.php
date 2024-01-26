@@ -12,16 +12,20 @@
                     <h5>{{ $categoria->nombre }}</h5>
                 </div>
 
-                @foreach($categoria->productos as $producto)
-                    <div class="col-12 col-sm-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $producto->nombre }}</h5>
+                <div class="col-12">
+                    <div class="row my-5">
+                        @foreach($categoria->productos as $producto)
+                            <div class="col-12 col-sm-4">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="..." class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $producto->nombre }}</h5>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             @endforeach
         </div>
     </div>
