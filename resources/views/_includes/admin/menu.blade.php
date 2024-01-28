@@ -1,12 +1,13 @@
 <ul class="nav">
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ action([\App\Http\Controllers\Backend\AdminController::class, 'home']) }}">
             <i class="nav-icon la la-lg la-dashboard"></i> Home
         </a>
     </li>
     <li class="nav-title">Administrador</li>
     <li class="nav-item nav-dropdown">
-        <a class="nav-link nav-dropdown-toggle" href="#">
+        <a class="nav-link nav-dropdown-toggle"
+           href="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'index']) }}">
             <i class="nav-icon la la-lg la-bank"></i> Categoría
         </a>
         <ul class="nav-dropdown-items">

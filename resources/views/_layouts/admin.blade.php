@@ -31,11 +31,13 @@
 </head>
 <body class="app aside-menu-fixed sidebar-lg-show">
 <header class="app-header bg-light border-0 navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto ml-3" type="button" data-toggle="sidebar-show"><span
-            class="navbar-toggler-icon"></span></button>
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto ml-3" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <a class="navbar-brand" href="#"><b>Back</b><span>strap</span></a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show"><span
-            class="navbar-toggler-icon"></span></button>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3"><a class="nav-link" href="#">Dashboard</a></li>
         <li class="nav-item px-3"><a class="nav-link" href="#">Users</a></li>
@@ -98,32 +100,36 @@
             <li class="breadcrumb-item active">Dashboard</li>
             <!-- Breadcrumb Menu-->
             <li class="breadcrumb-menu d-md-down-none">
-                <div class="btn-group" role="group" aria-label="Button group"><a class="btn"
-                                                                                 href="#"><i class="icon-speech"></i></a><a
-                        class="btn"
-                        href="./"><i class="icon-graph"></i>  Dashboard</a><a class="btn"
-                                                                              href="#"><i class="icon-settings"></i>
-                         Settings</a></div>
+                <div class="btn-group" role="group" aria-label="Button group">
+                    <a class="btn" href="#"><i class="icon-speech"></i></a>
+                    <a class="btn" href="./"><i class="icon-graph"></i>  Dashboard</a>
+                    <a class="btn" href="#"><i class="icon-settings"></i> Settings</a>
+                </div>
             </li>
         </ol>
         <div class="container-fluid">
             <div class="animated fadeIn"></div>
+
+            @yield('contenido')
         </div>
     </main>
     <aside class="aside-menu">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item"><a class="nav-link active"
-                                    data-toggle="tab"
-                                    href="#timeline"
-                                    role="tab"><i class="icon-list"></i></a></li>
-            <li class="nav-item"><a class="nav-link"
-                                    data-toggle="tab"
-                                    href="#messages"
-                                    role="tab"><i class="icon-speech"></i></a></li>
-            <li class="nav-item"><a class="nav-link"
-                                    data-toggle="tab"
-                                    href="#settings"
-                                    role="tab"><i class="icon-settings"></i></a></li>
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                    <i class="icon-list"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                    <i class="icon-speech"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                    <i class="icon-settings"></i>
+                </a>
+            </li>
         </ul>
         <!-- Tab panes-->
         <div class="tab-content">
@@ -133,13 +139,16 @@
                         Today
                     </div>
                     <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
-                        <div class="avatar float-right"><img class="img-avatar"
-                                                             src="img/avatars/7.jpg"
-                                                             alt="admin@bootstrapmaster.com"></div>
+                        <div class="avatar float-right">
+                            <img class="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
+                        </div>
                         <div>Meeting with<strong>Lucas</strong></div>
-                        <small class="text-muted mr-3"><i class="icon-calendar"></i>  1 -
-                            3pm</small><small class="text-muted"><i class="icon-location-pin"></i>  Palo Alto,
-                            CA</small>
+                        <small class="text-muted mr-3">
+                            <i class="icon-calendar"></i>  1 - 3pm
+                        </small>
+                        <small class="text-muted">
+                            <i class="icon-location-pin"></i>  Palo Alto, CA
+                        </small>
                     </div>
                     <div class="list-group-item list-group-item-accent-info">
                         <div class="avatar float-right"><img class="img-avatar"

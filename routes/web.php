@@ -21,4 +21,6 @@ Route::get('productos/{categoria?}', [App\Http\Controllers\ProductoController::c
 // ADMIN
 Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\Backend\AdminController::class, 'home']);
+
+    Route::resource('categorias', App\Http\Controllers\Backend\CategoriasController::class);
 });
