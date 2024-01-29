@@ -20,7 +20,25 @@ Route::get('productos/{categoria?}', [App\Http\Controllers\ProductoController::c
 
 // ADMIN
 Route::prefix('admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\Backend\AdminController::class, 'home']);
 
-    Route::resource('categorias', App\Http\Controllers\Backend\CategoriasController::class);
+    Route::middleware('admin-logueado:0')->group(function () {
+        Route::get('login', [App\Http\Controllers\Backend\AdminController::class, 'login']);
+        Route::post('login', [App\Http\Controllers\Backend\AdminController::class, 'loguear']);
+    });
+
+    Route::middleware('admin-logueado:1')->group(function () {
+        Route::get('/', [App\Http\Controllers\Backend\AdminController::class, 'home']);
+        Route::get('logout', [App\Http\Controllers\Backend\AdminController::class, 'logout']);
+        Route::resource('categorias', App\Http\Controllers\Backend\CategoriasController::class);
+    });
+});
+
+Route::get('crear-usuario', function () {
+    $user = new \App\Models\User();
+
+    $user->name = 'Test';
+    $user->email = 'test@test.com';
+    $user->password = \Illuminate\Support\Facades\Hash::make('test');
+
+    $user->save();
 });
