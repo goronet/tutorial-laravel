@@ -77,6 +77,10 @@ class CategoriasController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->delete();
+
+        return redirect()
+            ->action([CategoriasController::class, 'index'])
+            ->with(['success' => 'Categoría eliminada con éxito.']);
     }
 }

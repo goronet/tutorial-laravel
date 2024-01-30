@@ -18,9 +18,21 @@
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nombre  }}</td>
                     <td>
-                        <a class="btn btn-primary"
-                           href="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'edit'], $categoria->id) }}">Editar
-                        </a>
+                        <div class="d-flex">
+                            <a class="btn btn-primary"
+                               href="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'edit'], $categoria) }}">Editar
+                            </a>
+
+                            <form method="POST"
+                                  action="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'destroy'], $categoria) }}">
+                                @csrf
+                                @method('DELETE')
+
+                                <button class="btn btn-danger ml-3"
+                                        onclick="return confirm('¿Deseas eliminar esta categoría?')">Eliminar
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
