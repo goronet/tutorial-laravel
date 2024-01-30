@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -18,7 +18,7 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function loguear(Request $request)
+    public function loguear(LoginRequest $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
@@ -26,7 +26,11 @@ class AdminController extends Controller
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
             return redirect()->action([AdminController::class, 'home']);
         } else {
-            return redirect()->action([AdminController::class, 'login']);
+            return redirect()
+                ->action([AdminController::class, 'login'])
+                ->withErrors([
+                    'email' => 'Credenciales incorrectas'
+                ]);
         }
     }
 

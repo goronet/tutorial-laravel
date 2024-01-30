@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CrearCategoriaRequest;
+use App\Http\Requests\EditarCategoriaRequest;
 use App\Models\Categoria;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CategoriasController extends Controller
@@ -15,6 +16,7 @@ class CategoriasController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
+
         return view('admin.categorias.index', compact('categorias'));
     }
 
@@ -23,15 +25,19 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorias.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CrearCategoriaRequest $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->input('nombre');
+        $categoria->save();
+
+        return redirect()->action([CategoriasController::class, 'index']);
     }
 
     /**
@@ -53,7 +59,7 @@ class CategoriasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(EditarCategoriaRequest $request, Categoria $categoria)
     {
         $nombre = $request->input('nombre');
 

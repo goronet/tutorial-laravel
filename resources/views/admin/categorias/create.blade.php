@@ -10,9 +10,8 @@
             @include('admin._modules.errores')
 
             <form method="POST"
-                  action="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'update'], $categoria) }}">
+                  action="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'store']) }}">
                 @csrf
-                @method('patch')
 
                 <div class="row">
                     <div class="col-sm-12">
@@ -21,7 +20,6 @@
                             <input type="text"
                                    id="nombre"
                                    name="nombre"
-                                   value="{{ $categoria->nombre }}"
                                    class="form-control"
                                    placeholder="Ingrese un nombre"
                                    autocomplete="off">

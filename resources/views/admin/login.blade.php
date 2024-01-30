@@ -39,6 +39,10 @@
                             <h1>Login</h1>
                             <p class="text-muted">Sign In to your account</p>
 
+                            @foreach($errors->all() as $error)
+                                <div class="alert alert-danger">{{ $error }}</div>
+                            @endforeach
+
                             <form method="POST"
                                   action="{{ action([\App\Http\Controllers\Backend\AdminController::class, 'loguear'])  }}">
                                 @csrf

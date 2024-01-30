@@ -12,7 +12,8 @@
         </a>
         <ul class="nav-dropdown-items">
             <li class="nav-item">
-                <a class="nav-link" href="base/breadcrumb.html">
+                <a class="nav-link"
+                   href="{{ action([\App\Http\Controllers\Backend\CategoriasController::class, 'create']) }}">
                     <i class="nav-icon la la-lg la-puzzle"></i> Crear
                 </a>
             </li>
