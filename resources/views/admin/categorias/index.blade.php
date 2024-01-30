@@ -1,6 +1,9 @@
 @extends('_layouts.admin')
 
 @section('contenido')
+
+    @include('admin._modules.success')
+
     <table class="table table-responsive-sm">
         <thead>
             <tr>

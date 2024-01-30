@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CrearCategoriaRequest;
 use App\Http\Requests\EditarCategoriaRequest;
 use App\Models\Categoria;
-use Illuminate\Support\Facades\Redirect;
 
 class CategoriasController extends Controller
 {
@@ -37,7 +36,9 @@ class CategoriasController extends Controller
         $categoria->nombre = $request->input('nombre');
         $categoria->save();
 
-        return redirect()->action([CategoriasController::class, 'index']);
+        return redirect()
+            ->action([CategoriasController::class, 'index'])
+            ->with(['success' => 'Categoría creada con éxito.']);
     }
 
     /**
@@ -66,7 +67,9 @@ class CategoriasController extends Controller
         $categoria->nombre = $nombre;
         $categoria->save();
 
-        return Redirect::action([CategoriasController::class, 'index']);
+        return redirect()
+            ->action([CategoriasController::class, 'index'])
+            ->with(['success' => 'Categoría actualizada con éxito.']);
     }
 
     /**
