@@ -29,7 +29,12 @@ Route::prefix('admin')->group(function () {
     Route::middleware('admin-logueado:1')->group(function () {
         Route::get('/', [App\Http\Controllers\Backend\AdminController::class, 'home']);
         Route::get('logout', [App\Http\Controllers\Backend\AdminController::class, 'logout']);
+
+        // Categorías
         Route::resource('categorias', App\Http\Controllers\Backend\CategoriasController::class);
+
+        // Productos
+        Route::resource('productos', App\Http\Controllers\Backend\ProductoController::class);
     });
 });
 
