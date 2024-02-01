@@ -37,10 +37,7 @@ class ProductoController extends Controller
     public function store(CrearProductoRequest $request)
     {
         $producto = new Product();
-        $producto->nombre = $request->input('nombre');
-        $producto->precio = $request->input('precio');
-        $producto->stock = $request->input('stock');
-        $producto->categoria_id = $request->input('categoria_id');
+        $producto->fill($request->validated());
         $producto->save();
 
         return redirect()
@@ -74,10 +71,7 @@ class ProductoController extends Controller
      */
     public function update(EditarProductoRequest $request, Product $producto)
     {
-        $producto->nombre = $request->input('nombre');
-        $producto->precio = $request->input('precio');
-        $producto->stock = $request->input('stock');
-        $producto->categoria_id = $request->input('categoria_id');
+        $producto->fill($request->validated());
         $producto->save();
 
         return redirect()
