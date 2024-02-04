@@ -5,5 +5,5 @@
 @endsection
 
 @section('main')
-    <div id="ver_producto"></div>
+    <div id="ver_producto" data-id="{{ $producto->id }}"></div>
 @endsection

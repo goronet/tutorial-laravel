@@ -2,4 +2,8 @@ import './bootstrap.js';
 import VerProducto   from '@/components/productos/VerProducto.vue';
 import { createApp } from 'vue';
 
-createApp(VerProducto).mount('#ver_producto');
+const el = document.getElementById('ver_producto');
+
+createApp(VerProducto, {
+    id: el.getAttribute('data-id'),
+}).mount('#ver_producto');
